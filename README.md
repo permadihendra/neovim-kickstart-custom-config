@@ -27,6 +27,17 @@ This will automatically installed all the plugins
 '<shift>'U
 ```
 
+## Python Editor ? Install Ruff and Basedpyright
+1. Install ruff
+```bash
+:LspInstall ruff
+```
+
+2. Install basedpyright
+```bash
+:LspInstall basedpyright
+```
+
 ## PLugins Ready to Use
 * neo-tree : directory tree-list on the side
 * barbar : window bar for opened file/buffer
