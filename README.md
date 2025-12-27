@@ -34,3 +34,18 @@ This will automatically installed all the plugins
 * toggleterm : Toggle/open terminal 
 * conform : formatter
 
+## Uninstall 
+1. Remove neovim config
+```bash
+rm -rf ~/.config/nvim
+```
+
+2. Remove lazy.nvim plugin data
+```bash
+rm -rf ~/.local/share/nvim
+```
+
+3. Remove Neovim cache
+```bash
+rm -rf ~/.cache/nvim  
+```
