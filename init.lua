@@ -234,6 +234,10 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
+require('custom.scripts.beacon').setup()
+require('custom.scripts.highlights').setup()
+require('custom.scripts.diagnostics').setup()
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -630,7 +634,8 @@ require('lazy').setup({
       -- See :help vim.diagnostic.Opts
       vim.diagnostic.config {
         severity_sort = true,
-        float = { border = 'rounded', source = 'if_many' },
+        update_in_insert = false,
+        float = { border = 'rounded' },
         underline = { severity = vim.diagnostic.severity.ERROR },
         signs = vim.g.have_nerd_font and {
           text = {
@@ -642,16 +647,21 @@ require('lazy').setup({
         } or {},
         virtual_text = {
           source = 'if_many',
-          spacing = 2,
-          format = function(diagnostic)
-            local diagnostic_message = {
-              [vim.diagnostic.severity.ERROR] = diagnostic.message,
-              [vim.diagnostic.severity.WARN] = diagnostic.message,
-              [vim.diagnostic.severity.INFO] = diagnostic.message,
-              [vim.diagnostic.severity.HINT] = diagnostic.message,
-            }
-            return diagnostic_message[diagnostic.severity]
+          spacing = 4,
+          prefix = '●',
+          format = function(d)
+            local msg = d.message:gsub('\n', ' ')
+            return #msg > 50 and (msg:sub(1, 50) .. '…') or msg
           end,
+          --format = function(diagnostic)
+          --local diagnostic_message = {
+          --[vim.diagnostic.severity.ERROR] = diagnostic.message,
+          --[vim.diagnostic.severity.WARN] = diagnostic.message,
+          --[vim.diagnostic.severity.INFO] = diagnostic.message,
+          --[vim.diagnostic.severity.HINT] = diagnostic.message,
+          --}
+          --return diagnostic_message[diagnostic.severity]
+          --end,
         },
       }
 
@@ -895,7 +905,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
 
@@ -971,6 +981,12 @@ require('lazy').setup({
   -- place them in the correct locations.
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
+  --
+  --
+  -- LOAD My Custom Scripts
+  --require 'custom.scripts.beacon',
+  --require 'custom.scripts.highlights',
+  --require 'custom.scripts.diagnostics',
   --
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
