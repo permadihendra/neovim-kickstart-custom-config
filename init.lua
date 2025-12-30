@@ -234,9 +234,12 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
+-- [[ Custom Scripts for overide or tweak plugins ]]
+
 require('custom.scripts.beacon').setup()
 require('custom.scripts.highlights').setup()
 require('custom.scripts.diagnostics').setup()
+require('custom.scripts.diagnostics-tweak').setup()
 
 -- [[ Configure and install plugins ]]
 --
@@ -904,7 +907,7 @@ require('lazy').setup({
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- any other, such as 'tokyonight-night','tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
