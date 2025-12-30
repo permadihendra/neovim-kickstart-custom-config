@@ -45,6 +45,20 @@ This will automatically installed all the plugins
 * toggleterm : Toggle/open terminal 
 * conform : formatter
 
+## Advance Custom Scripts
+1. Place the custom-scripts.lua in:
+```bash
+nvim/lua/custom/scripts/custom-script.lua
+```
+2. Load the custom-script
+```lua
+# Edit nvim/init.lua and add on [[ Custom Scripts ... ]]
+...
+require('custom.scripts.custom-script').setup()
+...
+```
+3. Restart nvim
+
 ## Uninstall 
 1. Remove neovim config
 ```bash
