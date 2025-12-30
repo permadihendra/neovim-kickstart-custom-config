@@ -729,7 +729,8 @@ diagnostics.setup = function(config)
   end
 
   if diagnostics.config.keymap then
-    vim.api.nvim_set_keymap('n', diagnostics.config.keymap, '', {
+    vim.api.nvim_set_keymap('n', diagnostics.config.keymap, '<cmd>FancyDiagnosticsLine<cr>', {
+      desc = 'Diagnostics (line)',
       callback = diagnostics.hover,
     })
   end
