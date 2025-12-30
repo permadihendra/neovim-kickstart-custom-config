@@ -236,6 +236,7 @@ rtp:prepend(lazypath)
 
 -- [[ Custom Scripts for overide or tweak plugins ]]
 
+require('custom.scripts.keymap-tweak').setup()
 require('custom.scripts.beacon').setup()
 require('custom.scripts.highlights').setup()
 require('custom.scripts.diagnostics').setup()
