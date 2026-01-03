@@ -909,7 +909,26 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-night','tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-moon'
+      --vim.cmd.colorscheme 'tokyonight-moon'
+    end,
+  },
+
+  -- My New Added color scheme
+  {
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('github-theme').setup {
+        styles = {
+          comments = { italic = false }, -- Disable italics in comments
+        },
+      }
+      -- any other, such as 'github_dark', 'github_dark_default', 'github_dark_dimmed', or 'github_light'
+
+      vim.cmd 'colorscheme github_dark_default'
     end,
   },
 

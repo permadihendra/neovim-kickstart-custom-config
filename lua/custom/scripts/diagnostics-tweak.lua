@@ -11,8 +11,13 @@ local function apply_highlights()
   })
 
   vim.api.nvim_set_hl(0, 'FancyDiagnosticErrorIcon', {
-    fg = 'NONE',
+    fg = '#000000',
     bg = '#DC2626',
+  })
+
+  vim.api.nvim_set_hl(0, 'FancyDiagnosticWarn', {
+    fg = '',
+    bg = '#1E1E2E',
   })
 end
 
