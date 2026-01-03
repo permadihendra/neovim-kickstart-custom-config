@@ -2,7 +2,14 @@ return {
   'stevearc/conform.nvim',
   opts = {
     formatters_by_ft = {
-      python = { 'ruff' },
+      python = {
+        -- To fix auto-fixable lint errors.
+        'ruff_fix',
+        -- To run the ruff formatter
+        'ruff_format',
+        -- To Organize the imports
+        'ruff_organize_imports',
+      },
     },
 
     -- Use :Format and <space>f
